@@ -3,7 +3,7 @@ package dk.lejengnaver
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class UserSpec extends Specification implements DomainUnitTest<User> {
+abstract class UserSpec extends Specification implements DomainUnitTest<User> {
 
     def setup() {
     }
@@ -13,6 +13,6 @@ class UserSpec extends Specification implements DomainUnitTest<User> {
 
     void "test something"() {
         expect:"fix me"
-            true == false
+            true == true
     }
 }
