@@ -1,0 +1,11 @@
+import dk.lejengnaver.Sudoko
+
+model {
+    Sudoko sudoko
+}
+json {
+    id sudoko.id
+    title sudoko.title
+
+    hal.links(self: sudoko)
+}

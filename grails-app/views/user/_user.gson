@@ -1,0 +1,11 @@
+import dk.lejengnaver.User
+
+model {
+    User user
+}
+json {
+    id user.id
+    username user.userName
+
+    hal.links(self: user)
+}
