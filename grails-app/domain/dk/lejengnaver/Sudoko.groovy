@@ -2,7 +2,7 @@ package dk.lejengnaver
 
 import grails.rest.Resource
 
-@Resource(uri='/api/game')
+@Resource(uri='/api/games')
 class Sudoko {
 
     String title

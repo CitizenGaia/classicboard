@@ -2,7 +2,7 @@ package dk.lejengnaver
 
 import grails.rest.Resource
 
-@Resource(uri='/api/user')
+@Resource(uri='/api/users')
 class User {
 
     String userName

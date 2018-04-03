@@ -4,7 +4,7 @@ import grails.rest.Resource
 
 import java.text.SimpleDateFormat
 
-@Resource(uri='/api/score')
+@Resource(uri='/api/scores')
 class ScoreBoard {
 
     BigInteger ranking
