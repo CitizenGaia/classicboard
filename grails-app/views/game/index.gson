@@ -1,0 +1,19 @@
+import dk.lejengnaver.Game
+
+model {
+    Iterable<Game> sudokoList
+    Long gameCount
+    Integer max
+    Integer offset
+    String sort
+    String order
+}
+json {
+    hal.inline(gameList)
+    games tmpl.game(gameList ?: [])
+    count gameCount
+    max max
+    offset offset
+    sort sort
+    order order
+}

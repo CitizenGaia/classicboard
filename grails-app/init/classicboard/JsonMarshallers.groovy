@@ -1,8 +1,7 @@
 package classicboard
 
-import dk.lejengnaver.ScoreBoard
-import dk.lejengnaver.Sudoko
-import dk.lejengnaver.User
+import dk.lejengnaver.Game
+import dk.lejengnaver.Player
 import grails.converters.JSON
 
 class JsonMarshallers {
@@ -11,9 +10,8 @@ class JsonMarshallers {
         JSON.registerObjectMarshaller(Date) {
             return it?.format("dd-MM-yyyy")
         }
-        JSON.registerObjectMarshaller(User, User.UserMarshaller)
-        JSON.registerObjectMarshaller(Sudoko, Sudoko.SudokoMarshaller)
-        JSON.registerObjectMarshaller(ScoreBoard, ScoreBoard.ScoreBoardMarshaller)
+        JSON.registerObjectMarshaller(Player, Player.PlayerMarshaller)
+        JSON.registerObjectMarshaller(Game, Game.GameMarshaller)
     }
 
 }

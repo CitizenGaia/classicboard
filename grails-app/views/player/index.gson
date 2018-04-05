@@ -1,0 +1,19 @@
+import dk.lejengnaver.Player
+
+model {
+    Iterable<Player> playerList
+    Long playerCount
+    Integer max
+    Integer offset
+    String sort
+    String order
+}
+json {
+    hal.inline(playerList)
+    games tmpl.player(playerList ?: [])
+    count playerCount
+    max max
+    offset offset
+    sort sort
+    order order
+}

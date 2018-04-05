@@ -1,8 +1,7 @@
 package classicboard
 
-import dk.lejengnaver.ScoreBoard
-import dk.lejengnaver.Sudoko
-import dk.lejengnaver.User
+import dk.lejengnaver.Game
+import dk.lejengnaver.Player
 
 import java.security.SecureRandom
 
@@ -11,25 +10,19 @@ class BootStrap {
     def init = { servletContext ->
         JsonMarshallers.init()
 
-        User user = createUser().save(flush:true)
+        Player user = createPlayer().save(flush:true)
         printf("Got ${user}\n")
-        Sudoko game = createGame().save(flush:true)
+        Game game = createGame().save(flush:true)
         printf("Got ${game}\n")
 
-        def scoreBoard = new ScoreBoard(ranking: 1,
-                user: user,
-                game: game,
-        ).save(flush:true)
-
-        printf("Got ${scoreBoard}\n")
     }
 
-    User createUser() {
-        return new User(userName: "CitizenGaia")
+    Player createPlayer() {
+        return new Player(title: "CitizenGaia", location: "Nirvana")
     }
 
-    Sudoko createGame() {
-        return new Sudoko(title: "draft", author: "draft", description: "draft", content: createContent())
+    Game createGame() {
+        return new Game(title: "draft", author: "draft", description: "draft", content: createContent())
     }
 
     Map<String, String> createContent() {

@@ -1,0 +1,11 @@
+import dk.lejengnaver.Player
+
+model {
+    Player player
+}
+json {
+    id player.id
+    title player.title
+
+    hal.links(self: player)
+}

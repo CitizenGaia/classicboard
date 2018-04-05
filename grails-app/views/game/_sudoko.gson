@@ -1,0 +1,13 @@
+import dk.lejengnaver.Game
+
+model {
+    Sudoko game
+}
+json {
+    id game.id
+    title game.title
+    author game.author
+    description game.description
+
+    hal.links(self: game)
+}
