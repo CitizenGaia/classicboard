@@ -10,10 +10,12 @@ class BootStrap {
     def init = { servletContext ->
         JsonMarshallers.init()
 
-        Player user = createPlayer().save(flush:true)
-        printf("Got ${user}\n")
+/*
+        Player player = createPlayer().save(flush:true)
+        printf("Got ${player}\n")
         Game game = createGame().save(flush:true)
         printf("Got ${game}\n")
+*/
 
     }
 

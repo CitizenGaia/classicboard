@@ -1,28 +1,25 @@
 package dk.lejengnaver
 
-import grails.testing.mixin.integration.Integration
 import grails.gorm.transactions.Rollback
-import spock.lang.Specification
+import grails.testing.mixin.integration.Integration
 import org.hibernate.SessionFactory
+import spock.lang.Specification
 
 @Integration
-@Rollback
 class PlayerServiceSpec extends Specification {
 
     PlayerService playerService
     SessionFactory sessionFactory
 
     private Long setupData() {
-        // TODO: Populate valid domain instances and return a valid ID
-        //new Player(...).save(flush: true, failOnError: true)
-        //new Player(...).save(flush: true, failOnError: true)
-        //Player player = new Player(...).save(flush: true, failOnError: true)
-        //new Player(...).save(flush: true, failOnError: true)
-        //new Player(...).save(flush: true, failOnError: true)
-        assert false, "TODO: Provide a setupData() implementation for this generated test suite"
-        //player.id
+        // Populate valid domain instances and return a valid ID
+        5.times {
+            new Player(title: "aTitle${it}", location: "aLocation${it}").save(flush: true, failOnError: true)
+        }
+        Player.first().id
     }
 
+    @Rollback
     void "test get"() {
         setupData()
 
@@ -30,6 +27,7 @@ class PlayerServiceSpec extends Specification {
         playerService.get(1) != null
     }
 
+    @Rollback
     void "test list"() {
         setupData()
 
@@ -38,9 +36,9 @@ class PlayerServiceSpec extends Specification {
 
         then:
         playerList.size() == 2
-        assert false, "TODO: Verify the correct instances are returned"
     }
 
+    @Rollback
     void "test count"() {
         setupData()
 
@@ -48,6 +46,7 @@ class PlayerServiceSpec extends Specification {
         playerService.count() == 5
     }
 
+    @Rollback
     void "test delete"() {
         Long playerId = setupData()
 
@@ -62,10 +61,10 @@ class PlayerServiceSpec extends Specification {
         playerService.count() == 4
     }
 
+    @Rollback
     void "test save"() {
         when:
-        assert false, "TODO: Provide a valid instance to save"
-        Player player = new Player()
+        Player player = new Player(title: 'CitizenGaia', location: 'Gaia')
         playerService.save(player)
 
         then:

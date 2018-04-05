@@ -1,28 +1,26 @@
 package dk.lejengnaver
 
-import grails.testing.mixin.integration.Integration
 import grails.gorm.transactions.Rollback
-import spock.lang.Specification
+import grails.testing.mixin.integration.Integration
 import org.hibernate.SessionFactory
+import spock.lang.Specification
 
 @Integration
-@Rollback
 class GameServiceSpec extends Specification {
 
     GameService gameService
     SessionFactory sessionFactory
 
     private Long setupData() {
-        // TODO: Populate valid domain instances and return a valid ID
-        //new Game(...).save(flush: true, failOnError: true)
-        //new Game(...).save(flush: true, failOnError: true)
-        //Game game = new Game(...).save(flush: true, failOnError: true)
-        //new Game(...).save(flush: true, failOnError: true)
-        //new Game(...).save(flush: true, failOnError: true)
-        assert false, "TODO: Provide a setupData() implementation for this generated test suite"
-        //game.id
+        // Populate valid domain instances and return a valid ID
+        5.times {
+            def gameMap = new HashMap()
+            new Game(title: "aTitle${it}", author: "anAuthor${it}", description: "aDescription${it}", content: gameMap).save(flush: true, failOnError: true)
+        }
+        Game.first().id
     }
 
+    @Rollback
     void "test get"() {
         setupData()
 
@@ -30,6 +28,7 @@ class GameServiceSpec extends Specification {
         gameService.get(1) != null
     }
 
+    @Rollback
     void "test list"() {
         setupData()
 
@@ -38,9 +37,9 @@ class GameServiceSpec extends Specification {
 
         then:
         gameList.size() == 2
-        assert false, "TODO: Verify the correct instances are returned"
     }
 
+    @Rollback
     void "test count"() {
         setupData()
 
@@ -48,6 +47,7 @@ class GameServiceSpec extends Specification {
         gameService.count() == 5
     }
 
+    @Rollback
     void "test delete"() {
         Long gameId = setupData()
 
@@ -62,10 +62,10 @@ class GameServiceSpec extends Specification {
         gameService.count() == 4
     }
 
+    @Rollback
     void "test save"() {
         when:
-        assert false, "TODO: Provide a valid instance to save"
-        Game game = new Game()
+        Game game = new Game(title: "aTitle", author: "anAuthor", description: "aDescription", content: new HashMap())
         gameService.save(game)
 
         then:
