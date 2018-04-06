@@ -9,7 +9,7 @@ model {
     String order
 }
 json {
-    hal.inline(playerList)
+    hal.inline(playerList ?: [])
     games tmpl.player(playerList ?: [])
     count playerCount
     max max
