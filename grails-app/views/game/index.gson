@@ -1,7 +1,7 @@
 import dk.lejengnaver.Game
 
 model {
-    Iterable<Game> sudokoList
+    Iterable<Game> gameList
     Long gameCount
     Integer max
     Integer offset
